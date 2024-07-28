@@ -6,9 +6,16 @@ const Blog = () => {
   const [posts, setPosts] = useState([]);
 
   useEffect(() => {
-    axios.get('http://localhost:3000/posts')
-      .then(response => setPosts(response.data))
-      .catch(error => console.error(error));
+    const fetchPosts = async () => {
+      try {
+        const response = await axios.get('http://localhost:3000/posts');
+        setPosts(response.data);
+      } catch (error) {
+        console.error('Error fetching posts:', error);
+      }
+    };
+
+    fetchPosts();
   }, []);
 
   return (
@@ -17,7 +24,8 @@ const Blog = () => {
       {posts.map(post => (
         <div key={post.id} className="mb-4 p-4 border rounded shadow">
           <h2 className="text-xl font-semibold">{post.title}</h2>
-          <p>{post.content}</p>
+          <p>{post.content.substring(0, 150)}...</p>
+          <p className="text-gray-500">Likes: {post.likes}</p>
           <Link to={`/details/${post.id}`} className="text-blue-500">Read More</Link>
         </div>
       ))}

@@ -5,15 +5,17 @@ const Form = () => {
   const [title, setTitle] = useState('');
   const [content, setContent] = useState('');
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    axios.post('http://localhost:5000/posts', { title, content })
-      .then(response => {
-        console.log('Post created:', response.data);
-        setTitle('');
-        setContent('');
-      })
-      .catch(error => console.error(error));
+    const likes = Math.floor(Math.random() * 51);
+    try {
+      const response = await axios.post('http://localhost:3000/posts', { title, content, likes });
+      console.log('Post created:', response.data);
+      setTitle('');
+      setContent('');
+    } catch (error) {
+      console.error('Error creating post:', error);
+    }
   };
 
   return (
