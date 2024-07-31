@@ -1,3 +1,4 @@
+/*
 import React, { useEffect, useState } from "react";
 import axios from "axios";
 import { Link } from "react-router-dom";
@@ -35,6 +36,33 @@ const Blog = () => {
           </Link>
         </div>
       ))}
+    </div>
+  );
+};
+
+export default Blog;
+*/
+
+// src/components/Blog.jsx
+import React, { useContext, useEffect } from "react";
+import { PostContext } from "../context/PostContext";
+import PostList from "./PostList";
+import Button from "./Button";
+
+const Blog = () => {
+  const { fetchPosts } = useContext(PostContext);
+
+  useEffect(() => {
+    fetchPosts();
+  }, []);
+
+  return (
+    <div className="p-4">
+      <div className="flex justify-between items-center mb-4">
+        <h1 className="text-2xl font-bold">Blog</h1>
+        <Button text="Create Post" to="/form" />
+      </div>
+      <PostList />
     </div>
   );
 };
