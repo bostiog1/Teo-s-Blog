@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import axios from 'axios';
+import { Link } from 'react-router-dom';
 
 const Form = () => {
   const [title, setTitle] = useState('');
@@ -13,6 +14,8 @@ const Form = () => {
       console.log('Post created:', response.data);
       setTitle('');
       setContent('');
+      console.log('title: ', title);
+      console.log('content: ', content);
     } catch (error) {
       console.error('Error creating post:', error);
     }
@@ -43,6 +46,7 @@ const Form = () => {
         </div>
         <button type="submit" className="bg-blue-500 text-white px-4 py-2 rounded">Submit</button>
       </form>
+      <Link to='/' className='text-yellow-500'>Home</Link>
     </div>
   );
 };
