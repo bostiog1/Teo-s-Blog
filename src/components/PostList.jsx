@@ -1,7 +1,7 @@
 // src/components/PostList.jsx
-import React, { useContext } from 'react';
-import { PostContext } from '../context/PostContext';
-import Post from './Post';
+import React, { useContext } from "react";
+import { PostContext } from "../context/PostContext";
+import Post from "./Post";
 
 const PostList = () => {
   const { posts } = useContext(PostContext);
