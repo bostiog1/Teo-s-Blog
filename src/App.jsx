@@ -6,7 +6,7 @@ function App() {
   return (
     <main>
       <PostContext.Provider>
-        <RouterProvider router={router} />
+        <RouterProvider  router={router} />
       </PostContext.Provider>
     </main>
   );
