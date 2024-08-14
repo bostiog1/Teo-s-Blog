@@ -10,7 +10,7 @@ const PostProvider = ({ children }) => {
     try {
       const response = await axios.get('http://localhost:3000/posts');
       setPosts(response.data);
-      console.log('data: ', response.data);
+      // console.log('data: ', response.data);
     } catch (error) {
       console.error('Error fetching posts:', error);
     }
