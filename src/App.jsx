@@ -1,13 +1,13 @@
 import { RouterProvider } from "react-router-dom";
-import { router } from "./router"; // Adjust the import path as needed
-import { PostContext } from "./context/PostContext";
+import PostProvider from "./context/PostProvider"; 
+import { router } from "./routing/router";
 
 function App() {
   return (
     <main>
-      <PostContext.Provider>
-        <RouterProvider  router={router} />
-      </PostContext.Provider>
+      <PostProvider>
+        <RouterProvider router={router} />
+      </PostProvider>
     </main>
   );
 }
