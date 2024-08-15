@@ -5,7 +5,7 @@ import Form from "../components/Form";
 import ErrorPage from "../components/ErrorPage";
 import PageNotFound from "../components/PageNotFound";
 
-export const router = createBrowserRouter([
+export const  router = createBrowserRouter([
   {
     path: "/",
     element: <Blog />,
