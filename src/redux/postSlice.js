@@ -1,52 +1,68 @@
-import { createSlice, createAsyncThunk } from '@reduxjs/toolkit';
-import axios from 'axios';
+import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
+import axios from "axios";
 
-// Async Thunks for fetching, deleting, and updating posts
-export const fetchPosts = createAsyncThunk('posts/fetchPosts', async () => {
-  const response = await axios.get('http://localhost:3000/posts');
+// Async Thunks for fetching, deleting, creating, and updating posts
+export const fetchPosts = createAsyncThunk("posts/fetchPosts", async () => {
+  const response = await axios.get("http://localhost:3000/posts");
   return response.data;
 });
 
-export const deletePost = createAsyncThunk('posts/deletePost', async (id) => {
+export const deletePost = createAsyncThunk("posts/deletePost", async (id) => {
   await axios.delete(`http://localhost:3000/posts/${id}`);
   return id;
 });
 
 export const updatePost = createAsyncThunk(
-  'posts/updatePost',
+  "posts/updatePost",
   async ({ id, updatedPost }) => {
-    const response = await axios.put(`http://localhost:3000/posts/${id}`, updatedPost);
+    const response = await axios.put(
+      `http://localhost:3000/posts/${id}`,
+      updatedPost
+    );
+    return response.data;
+  }
+);
+
+export const createPost = createAsyncThunk(
+  "posts/createPost",
+  async (newPost) => {
+    const response = await axios.post("http://localhost:3000/posts", newPost);
     return response.data;
   }
 );
 
 // Create posts slice
 const postsSlice = createSlice({
-  name: 'posts',
+  name: "posts",
   initialState: {
     posts: [],
-    status: 'idle', // idle | loading | succeeded | failed
+    status: "idle",
     error: null,
   },
   reducers: {},
   extraReducers: (builder) => {
     builder
       .addCase(fetchPosts.pending, (state) => {
-        state.status = 'loading';
+        state.status = "loading";
       })
       .addCase(fetchPosts.fulfilled, (state, action) => {
-        state.status = 'succeeded';
+        state.status = "succeeded";
         state.posts = action.payload;
       })
       .addCase(fetchPosts.rejected, (state, action) => {
-        state.status = 'failed';
+        state.status = "failed";
         state.error = action.error.message;
       })
       .addCase(deletePost.fulfilled, (state, action) => {
         state.posts = state.posts.filter((post) => post.id !== action.payload);
       })
+      .addCase(createPost.fulfilled, (state, action) => {
+        state.posts.push(action.payload);
+      })
       .addCase(updatePost.fulfilled, (state, action) => {
-        const index = state.posts.findIndex((post) => post.id === action.payload.id);
+        const index = state.posts.findIndex(
+          (post) => post.id === action.payload.id
+        );
         if (index !== -1) {
           state.posts[index] = action.payload;
         }
