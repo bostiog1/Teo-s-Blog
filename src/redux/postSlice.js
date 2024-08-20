@@ -2,10 +2,28 @@ import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
 import axios from "axios";
 
 // Async Thunks for fetching, deleting, creating, and updating posts
+
+/*
 export const fetchPosts = createAsyncThunk("posts/fetchPosts", async () => {
   const response = await axios.get("http://localhost:3000/posts");
   return response.data;
 });
+*/
+
+// The updated fetchPosts in order to look by the search input
+export const fetchPosts = createAsyncThunk(
+  "posts/fetchPosts",
+  async (query = "") => {
+    // const response = await axios.get(`http://localhost:3000/posts?q=${query}`);
+    // const response = await axios.get(`http://localhost:3000/posts?title_like=${query}&content_like=${query}`);
+    const response = await axios.get(
+      `http://localhost:3000/posts?title_like=${query}`
+    );
+
+    console.log("API response:", response.data); // Check the response data
+    return response.data;
+  }
+);
 
 export const deletePost = createAsyncThunk("posts/deletePost", async (id) => {
   await axios.delete(`http://localhost:3000/posts/${id}`);
@@ -48,6 +66,7 @@ const postsSlice = createSlice({
       .addCase(fetchPosts.fulfilled, (state, action) => {
         state.status = "succeeded";
         state.posts = action.payload;
+        console.log("Updated posts state:", state.posts); // Check if posts are updated
       })
       .addCase(fetchPosts.rejected, (state, action) => {
         state.status = "failed";

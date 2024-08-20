@@ -3,6 +3,7 @@ import Button from "./Button";
 import { useSelector, useDispatch } from "react-redux";
 import PostList from "./PostList";
 import { fetchPosts } from "../redux/postSlice";
+import Input from "./Input";
 
 const Blog = () => {
   const dispatch = useDispatch();
@@ -30,6 +31,7 @@ const Blog = () => {
         <h1 className="text-2xl font-bold">Blog</h1>
         <Button text="Create Post" to="/form" />
       </div>
+      <Input />
       <PostList posts={posts} />
     </div>
   );
