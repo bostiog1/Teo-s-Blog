@@ -13,17 +13,12 @@ const Post = ({ post }) => {
   return (
     <div className="mb-4 p-4 border rounded shadow">
       <h2 className="text-xl font-semibold">{post.title}</h2>
-      <p>{post.content.substring(0, 150)}...</p>
       <p className="text-gray-500">Likes: {post.likes}</p>
+      <p>{post.content.substring(0, 150)}...</p>
       <Link to={`/details/${post.id}`} className="text-blue-500">
         Read More
       </Link>
-      <button
-        onClick={handleDelete}
-        className="bg-red-500 text-white px-4 py-2 rounded ml-4"
-      >
-        Delete
-      </button>
+      
       <Link to={`/update/${post.id}`} className="text-blue-500 ml-4">
         Update
       </Link>

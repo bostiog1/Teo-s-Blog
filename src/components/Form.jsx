@@ -3,17 +3,22 @@ import { useDispatch } from "react-redux";
 import { createPost } from "../redux/postSlice"; // We will add this action later
 import { Link } from "react-router-dom";
 
+import { useNavigate } from "react-router-dom"; // Import useNavigate
+
 const Form = () => {
   const [title, setTitle] = useState("");
   const [content, setContent] = useState("");
   const dispatch = useDispatch();
+  const navigate = useNavigate(); // Initialize useNavigate
 
   const handleSubmit = (e) => {
     e.preventDefault();
     const likes = Math.floor(Math.random() * 51);
     const newPost = { title, content, likes };
 
-    dispatch(createPost(newPost));
+    dispatch(createPost(newPost)).then(() => {
+      navigate("/"); // Redirect to home after successful creation
+    });
 
     setTitle("");
     setContent("");
@@ -44,17 +49,11 @@ const Form = () => {
         </div>
         <button
           type="submit"
-          className="bg-blue-500 text-white px-4 py-2 rounded"
+          className="bg-blue-500 text-white px-4 py-2 rounded hover:bg-blue-600 transition-colors duration-300"
         >
           Submit
         </button>
       </form>
-      <Link
-        to="/"
-        className="text-yellow-500 hover:text-yellow-600 hover:underline font-semibold transition-colors duration-300 ease-in-out px-4 py-2 rounded-lg"
-      >
-        Home
-      </Link>
     </div>
   );
 };

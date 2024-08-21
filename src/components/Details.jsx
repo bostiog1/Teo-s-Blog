@@ -2,12 +2,21 @@ import React, { useEffect } from "react";
 import { Link, useParams } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
 import { fetchPosts } from "../redux/postSlice"; // We'll fetch all posts
+import { deletePost } from "../redux/postSlice"; // Delete action from Redux
+import { useNavigate } from "react-router-dom"; // Import useNavigate
 
 const Details = () => {
   const { id } = useParams();
   const dispatch = useDispatch();
+  const navigate = useNavigate(); // Initialize useNavigate
   const posts = useSelector((state) => state.posts.posts);
   const status = useSelector((state) => state.posts.status);
+
+  const handleDelete = () => {
+    dispatch(deletePost(post.id)).then(() => {
+      navigate("/"); // Redirect to home after successful deletion
+    });
+  };
 
   useEffect(() => {
     if (status === "idle") {
@@ -24,12 +33,13 @@ const Details = () => {
       <h1 className="text-2xl font-bold mb-4">{post.title}</h1>
       <p>{post.content}</p>
       <p className="text-gray-500 mt-4">Likes: {post.likes}</p>
-      <Link
-        to="/"
-        className="text-yellow-500 hover:text-yellow-600 hover:underline font-semibold transition-colors duration-300 ease-in-out px-4 py-2 rounded-lg"
+      <button
+        onClick={handleDelete}
+        className="bg-red-500 text-white px-4 py-2 rounded ml-4 hover:bg-red-600 transition-colors duration-300"
       >
-        Home
-      </Link>
+        Delete
+      </button>
+      
     </div>
   );
 };
