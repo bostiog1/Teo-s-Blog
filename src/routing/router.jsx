@@ -4,12 +4,17 @@ import Details from "../components/Details";
 import Form from "../components/Form";
 import ErrorPage from "../components/ErrorPage";
 import PageNotFound from "../components/PageNotFound";
+import Home from "../components/Home";
 
 export const  router = createBrowserRouter([
   {
     path: "/",
-    element: <Blog />,
+    element: <Home />, // Homepage displaying blogs with navbar
   },
+  // {
+  //   path: "/",
+  //   element: <Blog />,
+  // },
   {
     path: "/details/:id",
     element: <Details />,
