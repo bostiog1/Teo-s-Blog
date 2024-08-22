@@ -26,13 +26,9 @@ const Blog = () => {
   }
 
   return (
-    <div className="p-4">
-      <div className="flex justify-between items-center mb-4">
-        <h1 className="text-2xl font-bold">Blog</h1>
-        <Button text="Create Post" to="/form" />
-      </div>
+    <div className="p-4 bg-gray-100 dark:bg-gray-900 text-gray-900 dark:text-white">
       <Input />
-      <PostList posts={posts} />
+      <PostList />
     </div>
   );
 };

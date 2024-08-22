@@ -1,29 +1,21 @@
 import React from "react";
-import { Link } from "react-router-dom";
-import { useDispatch } from "react-redux";
-import { deletePost } from "../redux/postSlice"; // Delete action from Redux
+import { useNavigate } from "react-router-dom";
 
 const Post = ({ post }) => {
-  const dispatch = useDispatch();
-
-  const handleDelete = () => {
-    dispatch(deletePost(post.id));
-  };
+  const navigate = useNavigate(); // Initialize useNavigate
 
   return (
-    <div className="mb-4 p-4 border rounded shadow">
+    <div
+      className="mb-4 p-4 border rounded shadow bg-white dark:bg-gray-800 text-gray-900 dark:text-gray-100 
+      hover:shadow-lg transition-shadow duration-300 cursor-pointer"
+      onClick={() => navigate(`/details/${post.id}`)}
+    >
       <h2 className="text-xl font-semibold">{post.title}</h2>
-      <p className="text-gray-500">Likes: {post.likes}</p>
+      <p className="text-gray-500 dark:text-gray-400">Likes: {post.likes}</p>
       <p>{post.content.substring(0, 150)}...</p>
-      <Link to={`/details/${post.id}`} className="text-blue-500">
-        Read More
-      </Link>
-      
-      <Link to={`/update/${post.id}`} className="text-blue-500 ml-4">
-        Update
-      </Link>
     </div>
   );
+
 };
 
 export default Post;

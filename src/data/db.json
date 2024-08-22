@@ -1,10 +1,9 @@
 {
   "posts": [
     {
-      "id": "1",
-      "title": "First Post",
-      "content": "This is the content of the first post. It has a lot of detailed information about various interesting topics that span multiple sentences and paragraphs to ensure it's sufficiently long.",
-      "likes": 34
+      "title": "412342134",
+      "content": "12312dsfasdg",
+      "id": "1"
     },
     {
       "id": "2",
@@ -19,22 +18,9 @@
       "likes": 45
     },
     {
-      "id": "0249",
-      "title": "21342134",
-      "content": "sdfasfda",
-      "likes": 7
-    },
-    {
-      "id": "d884",
-      "title": "asd",
-      "content": "asd",
-      "likes": 21
-    },
-    {
-      "id": "8343",
-      "title": "12312",
-      "content": "asfdasdagf",
-      "likes": 30
+      "title": "123123123",
+      "content": "123123123123",
+      "id": "c6fe"
     }
   ]
 }
