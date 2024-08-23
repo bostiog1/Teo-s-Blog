@@ -1,8 +1,6 @@
 import React, { useState } from "react";
 import { useDispatch } from "react-redux";
 import { createPost } from "../redux/postSlice"; // We will add this action later
-import { Link } from "react-router-dom";
-
 import { useNavigate } from "react-router-dom"; // Import useNavigate
 import Navbar from "./Navbar";
 

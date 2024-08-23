@@ -2,7 +2,7 @@ import { createBrowserRouter } from "react-router-dom";
 import Blog from "../components/Blog";
 import Details from "../components/Details";
 import Form from "../components/Form";
-import ErrorPage from "../components/ErrorPage";
+import ErrorPage from "../error handler/ErrorPage";
 import PageNotFound from "../components/PageNotFound";
 import Home from "../components/Home";
 import UpdatePost from "../components/UpdatePost";

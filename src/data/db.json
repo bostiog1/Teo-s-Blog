@@ -1,8 +1,8 @@
 {
   "posts": [
     {
-      "title": "412342134",
-      "content": "12312dsfasdg",
+      "title": "First Post ",
+      "content": "This is the content of the firstpost. It contains a wealth of knowledge and insights, providing valuable information that readers will find useful and engaging.\n\n",
       "id": "1"
     },
     {
@@ -18,9 +18,9 @@
       "likes": 45
     },
     {
-      "title": "123123123",
-      "content": "123123123123",
-      "id": "c6fe"
+      "title": "true",
+      "content": "mai multa muie la toti musulamnii",
+      "id": "ec55"
     }
   ]
 }

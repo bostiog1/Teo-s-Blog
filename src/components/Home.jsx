@@ -4,7 +4,7 @@ import Blog from "./Blog";
 
 const Home = () => {
   return (
-    <div className="min-h-screen bg-gray-100 dark:bg-gray-900 text-gray-900 dark:text-white">
+    <div className="min-h-screen bg-gray-100 dark:bg-gray-900 text-gray-900 dark:text-white transition-colors duration-300">
       <Navbar />
       <div className="p-4">
         <Blog />
