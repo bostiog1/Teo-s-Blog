@@ -8,8 +8,8 @@ const UpdatePost = () => {
   const { id } = useParams(); // Get the post ID from the URL
   const dispatch = useDispatch();
   const navigate = useNavigate();
-  console.log("Post ID from URL:", id);
-  
+  // console.log("Post ID from URL:", id);
+
   const post = useSelector((state) =>
     state.posts.posts.find((post) => post.id === parseInt(id))
   );
@@ -18,17 +18,12 @@ const UpdatePost = () => {
   const [content, setContent] = useState("");
 
   useEffect(() => {
-    console.log("Fetched post data:", post);
     if (post) {
       setTitle(post.title);
       setContent(post.content);
-    } else {
-      // Handle case where post is not found or loading state
-      setTitle(""); // Or some loading text if you prefer
-      setContent("");
     }
   }, [post]);
-  
+
   const handleSubmit = (e) => {
     e.preventDefault();
     dispatch(updatePost({ id, updatedPost: { title, content } }))

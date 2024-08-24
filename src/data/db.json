@@ -1,11 +1,6 @@
 {
   "posts": [
     {
-      "title": "First Post ",
-      "content": "This is the content of the firstpost. It contains a wealth of knowledge and insights, providing valuable information that readers will find useful and engaging.\n\n",
-      "id": "1"
-    },
-    {
       "id": "2",
       "title": "Second Post",
       "content": "This is the content of the second post. It contains a wealth of knowledge and insights, providing valuable information that readers will find useful and engaging.",
@@ -18,9 +13,16 @@
       "likes": 45
     },
     {
-      "title": "true",
-      "content": "mai multa muie la toti musulamnii",
-      "id": "ec55"
+      "id": "8d1f",
+      "title": "the forth post",
+      "content": "This is the content of the firstpost. It contains a wealth of knowledge and insights, providing valuable information that readers will find useful and engaging.\n\nThis is the content of the firstpost. It contains a wealth of knowledge and insights, providing valuable information that readers will find useful and engaging.\n\nThis is the content of the firstpost. It contains a wealth of knowledge and insights, providing valuable information that readers will find useful and engaging.\n\n",
+      "likes": 50
+    },
+    {
+      "id": "f28c",
+      "title": "something else",
+      "content": "hereis modified",
+      "likes": 34
     }
   ]
 }
