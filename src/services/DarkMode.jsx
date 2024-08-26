@@ -22,12 +22,13 @@ const DarkModeToggle = () => {
   return (
     <button
       onClick={toggleDarkMode}
-      className="absolute w-10 h-10 bottom-10 right-10 bg-neutral-900 dark:bg-white 
+      className="fixed w-10 h-10 bottom-10 right-10 bg-neutral-900 dark:bg-white 
       rounded-full text-white dark:text-black font-semibold flex items-center justify-center shadow-lg transition-transform duration-300 transform hover:scale-110"
     >
       {darkMode ? "☀️" : "🌙"}
     </button>
   );
+  
 };
 
 export default DarkModeToggle;
