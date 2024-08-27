@@ -24,4 +24,6 @@ The main idea of the project was to practice various concepts such as:
 
 -git
 
+You can also use your own server (check the comments in the file postSlice.js) with the command from bellow
+
 # Command for running the sever: json-server --watch src/data/db.json
