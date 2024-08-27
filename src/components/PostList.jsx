@@ -27,28 +27,31 @@ const PostList = () => {
         <Post key={post.id} post={post} />
       ))}
 
-      {/* Pagination Controls */}
-      <div className="mt-4 flex justify-center">
-        {Array.from({ length: totalPages }, (_, i) => i + 1).map((page) => (
-          <button
-            key={page}
-            onClick={() => goToPage(page)}
-            className={`mx-1 px-3 py-1 border rounded ${
-              page === currentPage
-                ? "bg-blue-500 text-white dark:bg-blue-700 dark:text-white"
-                : "bg-white text-black dark:bg-gray-800 dark:text-gray-300"
-            } hover:bg-gray-200 dark:hover:bg-gray-700 transition`}
-          >
-            {page}
-          </button>
-        ))}
-      </div>
+      {/* Conditionally render pagination controls */}
+      {totalPages > 1 && (
+        <div className="mt-4 flex justify-center">
+          {Array.from({ length: totalPages }, (_, i) => i + 1).map((page) => (
+            <button
+              key={page}
+              onClick={() => goToPage(page)}
+              className={`mx-1 px-3 py-1 border rounded ${
+                page === currentPage
+                  ? "bg-blue-500 text-white dark:bg-blue-700 dark:text-white"
+                  : "bg-white text-black dark:bg-gray-800 dark:text-gray-300"
+              } hover:bg-gray-200 dark:hover:bg-gray-700 transition`}
+            >
+              {page}
+            </button>
+          ))}
+        </div>
+      )}
     </div>
   );
 };
 
 export default PostList;
 
+// Drag and drop doesnt work ... bellow you have the code
 /*
 const PostList = () => {
   const posts = useSelector((state) => state.posts.filteredPosts); // Use filteredPosts
